@@ -78,9 +78,6 @@ def save_profile_picture(file):
 
 
 HTML = """
-<div style="position:fixed;top:10px;right:15px;color:#bbb;font-size:14px;">
-    SAMchat v1.5
-</div>
 <!DOCTYPE html>
 <html>
 <head>
@@ -209,6 +206,9 @@ HTML = """
 </head>
 
 <body>
+<div style="position:fixed;top:10px;right:15px;color:#bbb;font-size:14px;">
+    SAMchat v1.5
+</div>
 <div class="container">
 
     {% for category, message in get_flashed_messages(with_categories=true) %}
