@@ -1,8 +1,3 @@
-from flask import Flask, request, redirect, session, render_template_string
-
-app = Flaskapp = Flask(__name__)
-app.secret_key = "mysecretkey"
-
 users = {}
 messages = []
 
