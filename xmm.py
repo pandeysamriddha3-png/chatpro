@@ -273,12 +273,17 @@ HTML = """
                     alt="Profile picture"
                 >
             {% else %}
-                <span class="avatar">
-                    {{ current_user.username[0]|upper }}
-                </span>
-            {% endif %}
-
-            <h2>Welcome {{ current_user.username }}</h2>
+<span class="avatar">
+    {% if current_user %}
+        {{ current_user.username[0]|upper }}
+    {% else %}
+        U
+    {% endif %}
+</span>
+{% endif %}
+            {% if current_user %}
+<h2>Welcome {{ current_user.username }}</h2>
+{% endif %}
 
             <a href="{{ url_for('logout') }}">
                 <button>Logout</button>
