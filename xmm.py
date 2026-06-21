@@ -10,7 +10,7 @@ HTML = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Mini Chat</title>
+    <title>SAMchat </title>
     <style>
         body{
             margin:0;
