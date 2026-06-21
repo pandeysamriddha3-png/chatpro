@@ -1,14 +1,3 @@
-from flask import Flask, request, redirect, session, render_template_string
-
-app = Flask(__name__)
-app.secret_key = "mysecretkey"
-
-users = {}
-messages = []
-
-HTML = """
-<!DOCTYPE html>
-<html>
 <head>
     <title>SAMchat </title>
     <style>
