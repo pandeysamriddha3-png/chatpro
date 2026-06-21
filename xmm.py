@@ -1,36 +1,59 @@
- 
 from flask import Flask, request, redirect, session, render_template_string
 
-app = Flask(__name__)
+app = Flask(**name**)
 app.secret_key = "mysecretkey"
 
 users = {}
 messages = []
 
 HTML = """
+
 <!DOCTYPE html>
+
 <html>
 <head>
 <title>Mini Chat</title>
 <style>
 body{
-    font-family:Arial;
-    background:#1e1e1e;
-    color:white;
+    margin:0;
     padding:20px;
+    font-family:Arial,sans-serif;
+    background:linear-gradient(135deg,#14002c,#4b0082);
+    color:white;
 }
-input,button{
-    padding:8px;
-    margin:5px;
+
+input{
+padding:12px;
+margin:5px;
+border:none;
+border-radius:10px;
 }
+
+button{
+padding:12px;
+margin:5px;
+border:none;
+border-radius:10px;
+background:#9f5cff;
+color:white;
+cursor:pointer;
+}
+
 .chat{
-    border:1px solid #555;
-    height:300px;
-    overflow-y:auto;
-    padding:10px;
-    margin-bottom:10px;
+background:rgba(255,255,255,0.1);
+border-radius:20px;
+height:400px;
+overflow-y:auto;
+padding:15px;
+margin-bottom:10px;
 }
-</style>
+
+.chat p{
+background:#7c3aed;
+padding:10px;
+border-radius:12px;
+} </style>
+
 </head>
 <body>
 
@@ -77,41 +100,46 @@ input,button{
 
 @app.route("/")
 def home():
-    return render_template_string(HTML, messages=messages)
+return render_template_string(HTML, messages=messages)
 
 @app.route("/register", methods=["POST"])
 def register():
-    username = request.form["username"]
-    password = request.form["password"]
+username = request.form["username"]
+password = request.form["password"]
 
-    if username not in users:
-        users[username] = password
+```
+if username not in users:
+    users[username] = password
 
-    return redirect("/")
+return redirect("/")
+```
 
 @app.route("/login", methods=["POST"])
 def login():
-    username = request.form["username"]
-    password = request.form["password"]
+username = request.form["username"]
+password = request.form["password"]
 
-    if username in users and users[username] == password:
-        session["user"] = username
+```
+if username in users and users[username] == password:
+    session["user"] = username
 
-    return redirect("/")
+return redirect("/")
+```
 
 @app.route("/send", methods=["POST"])
 def send():
-    if "user" in session:
-        messages.append({
-            "user": session["user"],
-            "text": request.form["message"]
-        })
-    return redirect("/")
+if "user" in session:
+messages.append({
+"user": session["user"],
+"text": request.form["message"]
+})
+return redirect("/")
 
 @app.route("/logout")
 def logout():
-    session.clear()
-    return redirect("/")
+session.clear()
+return redirect("/")
 
-if __name__ == "__main__":
-    app.run(debug=True)
+if **name** == "**main**":
+app.run(debug=True)
+"""
