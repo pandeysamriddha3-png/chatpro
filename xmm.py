@@ -55,7 +55,7 @@ def init_db():
             );
             """
         )
-
+init_db()
 
 def save_profile_picture(file):
     if not file or not file.filename:
