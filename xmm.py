@@ -1,6 +1,6 @@
 from flask import Flask, request, redirect, session, render_template_string
 
-app = Flask(**name**)
+app = Flaskapp = Flask(__name__)
 app.secret_key = "mysecretkey"
 
 users = {}
@@ -140,6 +140,6 @@ def logout():
 session.clear()
 return redirect("/")
 
-if **name** == "**main**":
+if if __name__ == "__main__":
 app.run(debug=True)
 """
