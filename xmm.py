@@ -1,7 +1,3 @@
-<head>
-    <title>SAMchat </title>
-    <style>
-        body{
             margin:0;
             padding:20px;
             font-family:Arial,sans-serif;
