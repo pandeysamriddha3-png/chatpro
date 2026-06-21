@@ -78,6 +78,9 @@ def save_profile_picture(file):
 
 
 HTML = """
+<div style="position:fixed;top:10px;right:15px;color:#bbb;font-size:14px;">
+    SAMchat v1.5
+</div>
 <!DOCTYPE html>
 <html>
 <head>
