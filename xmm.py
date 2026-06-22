@@ -85,7 +85,7 @@ HTML = """
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>SAMchat</title>
-
+<link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='xsam.jpg.jpg') }}">
     <style>
         * {
             box-sizing: border-box;
