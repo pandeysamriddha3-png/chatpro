@@ -16,6 +16,9 @@ from werkzeug.utils import secure_filename
 
 
 app = Flask(__name__)
+from datetime import timedelta
+
+app.permanent_session_lifetime = timedelta(days=30)
 app.secret_key = os.environ.get("SECRET_KEY", "change-this-secret-key")
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
