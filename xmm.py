@@ -395,7 +395,7 @@ def home():
                 (session["user_id"],),
             ).fetchone()
 
-            messages = db.execute(
+            messages = db.execute(        
                 """
                 SELECT
                     messages.text,
