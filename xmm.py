@@ -394,8 +394,7 @@ def home():
                 "SELECT * FROM users WHERE id = ?",
                 (session["user_id"],),
             ).fetchone()
-print("SESSION USER ID:", session.get("user_id"))
-print("CURRENT USER:", current_user)
+
             messages = db.execute(
                 """
                 SELECT
