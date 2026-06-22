@@ -86,7 +86,7 @@ HTML = """
     
     <meta name="google-site-verification" content="Vvki8wlgWm1nkru8ON8cbG1-y7sBmfc0lFkguPL488Y" />
 
-    <title>SAMchat</title>
+    <title>Xter</title>
 <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='xsam.jpg.jpg') }}">
     <style>
         * {
