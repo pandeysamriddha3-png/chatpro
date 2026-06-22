@@ -83,6 +83,8 @@ HTML = """
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="google-site-verification" content="Vvki8wlgWm1nkru8ON8cbG1-y7sBmfc0lFkguPL488Y" />
 
     <title>SAMchat</title>
 <link rel="icon" type="image/jpeg" href="{{ url_for('static', filename='xsam.jpg.jpg') }}">
