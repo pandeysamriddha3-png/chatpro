@@ -408,12 +408,12 @@ function renderMessages(messages) {
             : '<span class="avatar">' + escapeHtml(msg.username[0].toUpperCase()) + '</span>';
 
         return (
-            '<div class="message">' +
-                avatar +
-                '<div class="bubble"><b>' + escapeHtml(msg.username) + '</b>: ' +
-                escapeHtml(msg.text) +
-                '<small>' + escapeHtml(msg.created_at) + '</small></div>' +
-            '</div>'
+            '<div class="bubble"><b>' + escapeHtml(msg.username) + '</b>: ' +
+escapeHtml(msg.text || '') +
+(msg.image
+ ? '<br><img src="/static/chat_images/' + msg.image + '" style="max-width:250px;border-radius:12px;display:block;margin-top:8px;">'
+ : '') +
+'<small>' + escapeHtml(msg.created_at) + '</small></div>'
         );
     }).join("");
 
