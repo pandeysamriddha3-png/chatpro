@@ -370,12 +370,7 @@ HTML = """
             <button type="submit">Send</button>
         </form>
 
-        <script>
-            const chat = document.getElementById("chat");
-            
-            
-
-    {% endif %}
+ {% endif %}
 
 </div>
 <script>
