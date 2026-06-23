@@ -379,9 +379,52 @@ HTML = """
 
 </div>
 <script>
-setInterval(function() {
-    location.reload();
-}, 5000);
+function escapeHtml(text) {
+    const div = document.createElement("div");
+    div.innerText = text;
+    return div.innerHTML;
+}
+
+function renderMessages(messages) {
+    const chat = document.getElementById("chat");
+    if (!chat) return;
+
+    if (messages.length === 0) {
+        chat.innerHTML = "<p>No messages yet.</p>";
+        return;
+    }
+
+    chat.innerHTML = messages.map(function(msg) {
+        const avatar = msg.profile_pic
+            ? '<img class="avatar" src="/static/profile_pics/' + msg.profile_pic + '" alt="Profile picture">'
+            : '<span class="avatar">' + escapeHtml(msg.username[0].toUpperCase()) + '</span>';
+
+        return (
+            '<div class="message">' +
+                avatar +
+                '<div class="bubble"><b>' + escapeHtml(msg.username) + '</b>: ' +
+                escapeHtml(msg.text) +
+                '<small>' + escapeHtml(msg.created_at) + '</small></div>' +
+            '</div>'
+        );
+    }).join("");
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+function fetchMessages() {
+    fetch("/messages")
+        .then(function(res) { return res.json(); })
+        .then(function(data) { renderMessages(data.messages); })
+        .catch(function(err) { console.error("Failed to fetch messages:", err); });
+}
+
+document.addEventListener("DOMContentLoaded", function() {
+    if (document.getElementById("chat")) {
+        fetchMessages();
+        setInterval(fetchMessages, 5000);
+    }
+});
 </script>
 </body>
 </html>
