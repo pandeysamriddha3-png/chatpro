@@ -345,10 +345,18 @@ HTML = """
                             {{ msg.username[0]|upper }}
                         </span>
                     {% endif %}
+<div class="bubble">
+    <b>{{ msg.username }}</b>: {{ msg.text }}
 
-                    <div class="bubble">
-                        <b>{{ msg.username }}</b>: {{ msg.text }}
-                        <small>{{ msg.created_at }}</small>
+    {% if msg.image %}
+    <img
+        src="{{ url_for('static', filename='chat_images/' + msg.image) }}"
+        style="max-width:250px;border-radius:12px;display:block;margin-top:8px;"
+    >
+    {% endif %}
+
+    <small>{{ msg.created_at }}</small>
+</div>
                     </div>
 
                 </div>
