@@ -361,7 +361,7 @@ HTML = """
 
         </div>
 
-        <form action="{{ url_for('send') }}" method="post">
+        <form action="{{ url_for('send') }}" method="post" enctype="multipart/form-data">
             <input
                 class="message-input"
                 name="message"
@@ -369,6 +369,8 @@ HTML = """
                 maxlength="500"
                 required
             >
+
+            <input type="file" name="image" accept="image/*">
 
             <button type="submit">Send</button>
         </form>
