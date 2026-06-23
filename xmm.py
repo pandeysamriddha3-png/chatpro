@@ -24,6 +24,8 @@ app.secret_key = os.environ.get("SECRET_KEY", "change-this-secret-key")
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASE = os.path.join(BASE_DIR, "samchat.db")
 UPLOAD_FOLDER = os.path.join(BASE_DIR, "static", "profile_pics")
+CHAT_UPLOAD_FOLDER = os.path.join(BASE_DIR, "static", "chat_images")
+os.makedirs(CHAT_UPLOAD_FOLDER, exist_ok=True)
 
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg", "webp"}
 
