@@ -372,8 +372,8 @@ HTML = """
 
         <script>
             const chat = document.getElementById("chat");
-            chat.scrollTop = chat.scrollHeight;
-        </script>
+            
+            
 
     {% endif %}
 
