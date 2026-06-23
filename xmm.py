@@ -378,6 +378,11 @@ HTML = """
     {% endif %}
 
 </div>
+<script>
+setInterval(function() {
+    location.reload();
+}, 5000);
+</script>
 </body>
 </html>
 """
