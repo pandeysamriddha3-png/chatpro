@@ -555,24 +555,45 @@ def update_profile_picture():
 
 
 @app.route("/send", methods=["POST"])
+@app.route("/send", methods=["POST"])
 def send():
     if not session.get("user_id"):
         flash("Please login first.")
         return redirect(url_for("home"))
 
     message = request.form.get("message", "").strip()
+    image = request.files.get("image")
 
-    if message:
+    image_name = None
+
+    if image and image.filename:
+        ext = image.filename.rsplit(".", 1)[1].lower()
+
+        if ext in {"png", "jpg", "jpeg", "webp"}:
+            image_name = f"{uuid.uuid4().hex}.{ext}"
+            image.save(
+                os.path.join(
+                    CHAT_UPLOAD_FOLDER,
+                    image_name
+                )
+            )
+
+    if message or image_name:
         with get_db() as db:
             db.execute(
                 """
-                INSERT INTO messages (user_id, text)
-                VALUES (?, ?)
+                INSERT INTO messages (user_id, text, image)
+                VALUES (?, ?, ?)
                 """,
-                (session["user_id"], message[:500]),
+                (
+                    session["user_id"],
+                    message[:500],
+                    image_name
+                )
             )
             db.commit()
 
+    return redirect(url_for("home"))
     return redirect(url_for("home"))
 
 @app.route("/messages")
