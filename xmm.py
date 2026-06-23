@@ -555,7 +555,6 @@ def update_profile_picture():
 
 
 @app.route("/send", methods=["POST"])
-@app.route("/send", methods=["POST"])
 def send():
     if not session.get("user_id"):
         flash("Please login first.")
@@ -593,7 +592,6 @@ def send():
             )
             db.commit()
 
-    return redirect(url_for("home"))
     return redirect(url_for("home"))
 
 @app.route("/messages")
