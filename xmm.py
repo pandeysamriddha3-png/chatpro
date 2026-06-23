@@ -532,6 +532,38 @@ def send():
 
     return redirect(url_for("home"))
 
+@app.route("/messages")
+def get_messages():
+    if not session.get("user_id"):
+        return {"messages": []}
+
+    with get_db() as db:
+        messages = db.execute(
+            """
+            SELECT
+                messages.text,
+                messages.created_at,
+                users.username,
+                users.profile_pic
+            FROM messages
+            JOIN users ON users.id = messages.user_id
+            ORDER BY messages.id ASC
+            """
+        ).fetchall()
+
+    return {
+        "messages": [
+            {
+                "text": m["text"],
+                "username": m["username"],
+                "profile_pic": m["profile_pic"],
+                "created_at": m["created_at"],
+            }
+            for m in messages
+        ]
+    }
+
+
 
 @app.route("/logout")
 def logout():
