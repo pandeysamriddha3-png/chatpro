@@ -603,11 +603,14 @@ def get_messages():
         messages = db.execute(
             """
             SELECT
-                messages.text,
-                messages.created_at,
-                users.username,
-                users.profile_pic
-            FROM messages
+            messages.text,
+            messages.image,
+            messages.created_at,
+            users.username,
+            users.profile_pic
+                
+    
+          FROM messages
             JOIN users ON users.id = messages.user_id
             ORDER BY messages.id ASC
             """
