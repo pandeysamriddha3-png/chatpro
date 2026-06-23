@@ -433,6 +433,7 @@ def register():
                 """,
                 (username, generate_password_hash(password)),
             )
+            db.commit()
 
         flash("Registration successful. Now login.", "success")
 
