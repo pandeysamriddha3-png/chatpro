@@ -457,6 +457,7 @@ def login():
     if user and check_password_hash(user["password_hash"], password):
         session.clear()
         session["user_id"] = user["id"]
+        session.permanent = True
     else:
         flash("Wrong username or password.")
 
