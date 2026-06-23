@@ -523,6 +523,7 @@ def send():
                 """,
                 (session["user_id"], message[:500]),
             )
+            db.commit()
 
     return redirect(url_for("home"))
 
