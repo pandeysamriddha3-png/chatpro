@@ -619,11 +619,12 @@ def get_messages():
     return {
         "messages": [
             {
-                "text": m["text"],
-                "username": m["username"],
-                "profile_pic": m["profile_pic"],
-                "created_at": m["created_at"],
-            }
+              "text": m["text"],
+             "image": m["image"],
+             "username": m["username"],
+             "profile_pic": m["profile_pic"],
+             "created_at": m["created_at"],  
+           }
             for m in messages
         ]
     }
